@@ -13,23 +13,23 @@ public class Main {
         List<String[]> lines = Helper.readCSV(filename);
         List<Marker> markers = new ArrayList<Marker>();
         
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < lines.size(); i++) {
             
             String[] data = lines.get(i);
-            String id = data[0];
-            String lat = data[1];
-            String lng = data[2];
-            String cuisine = data[3];
-            // Skip item 4: is part of the restaurant name
-            String name = data[5];
-            String owner = data[6];
-            String inspected = data[7];
-            String acceptsCard = data[8];
-            System.out.println(name);
-            
-            double latitude = Double.parseDouble(lat);
-            double longitude = Double.parseDouble(lng);
-            Marker marker = new Marker(latitude, longitude, name);
+            System.out.println((i+1) + ", " + data.length);
+            double lat = Double.parseDouble(data[0]);
+            double lng = Double.parseDouble(data[1]);
+            String name = data[2];
+            int license = Integer.parseInt(data[3]);
+            boolean passed = data[4] == "true" ? true : false;
+            String notes = data[5];
+            if (data.length > 6) {
+               System.out.println("LONGER");
+               System.out.println(data[5]);
+               System.out.println(data[6]);
+               System.out.println(" ");
+            }
+            Marker marker = new Marker(lat, lng, name);
             marker.setSize(10);
             markers.add(marker);
             
