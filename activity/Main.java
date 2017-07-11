@@ -5,6 +5,18 @@ import java.awt.Color;
 import tools.Helper;
 import tools.Marker;
 
+/*
+ * Instructions to Run:
+ * Navigate to the /episode03 directory
+ * Compile tools (only need to do this once):
+   $ javac tools/*.java
+ * Compile and run your code (each time you make changes):
+   $ javac activity/*.java
+   $ java activity.Main
+ * Keep in mind that all file paths are relative to /episode03
+ * View map output at: https://illinoistechesi.github.io/atlas/view
+ */
+
 public class Main {
     
     public static void main(String[] args) {
