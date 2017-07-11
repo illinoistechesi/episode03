@@ -46,6 +46,24 @@ public class Marker {
         this.text = text;
     }
     
+    public Marker(double lat, double lng, String text, Color color) {
+        this.lat = lat;
+        this.lng = lng;
+        this.color = color;
+        this.size = 1;
+        this.opacity = 1.0;
+        this.text = text;
+    }
+    
+    public Marker(double lat, double lng, String text, Color color, double size) {
+        this.lat = lat;
+        this.lng = lng;
+        this.color = color;
+        this.size = size;
+        this.opacity = 1.0;
+        this.text = text;
+    }
+    
     public double getLat() {
         return this.lat;
     }

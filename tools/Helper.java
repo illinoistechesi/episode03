@@ -2,6 +2,7 @@ package tools;
 import java.util.*;
 import java.io.*;
 import java.util.regex.*;
+import activity.*;
 
 public class Helper {
 
@@ -226,6 +227,25 @@ public class Helper {
             data.add(line);
         }
         return data;
+    }
+    
+    public static List<Inspection> readInspectionsFromFile(String filename) {
+        List<Inspection> res = new ArrayList<Inspection>();
+        List<String[]> lines = Helper.readCSV(filename);
+        for (int i = 0; i < lines.size(); i++) {
+            String[] data = lines.get(i);
+            double lat = Double.parseDouble(data[0]);
+            double lng = Double.parseDouble(data[1]);
+            String name = data[2];
+            int license = Integer.parseInt(data[3]);
+            boolean passed = data[4].equals("true") ? true : false;
+            boolean highRisk = data[5].equals("true") ? true : false;
+            int daysSince = Integer.parseInt(data[6]);
+            String notes = data[7];
+            Inspection inspection = new Inspection(lat, lng, name, license, passed, highRisk, daysSince, notes);
+            res.add(inspection);
+        }
+        return res;
     }
     
     public static void writeAtlasData(String filename, List<Marker> markers) {
