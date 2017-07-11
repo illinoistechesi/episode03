@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.awt.Color;
 import tools.Helper;
 import tools.Marker;
 
@@ -11,26 +12,28 @@ public class Main {
         String outfile = args[1];
         
         List<String[]> lines = Helper.readCSV(filename);
+        //List<Inspection> inspections = Helper.readInspectionsFromFile(filename);
         List<Marker> markers = new ArrayList<Marker>();
         
         for (int i = 0; i < lines.size(); i++) {
             
             String[] data = lines.get(i);
-            System.out.println((i+1) + ", " + data.length);
+            
             double lat = Double.parseDouble(data[0]);
             double lng = Double.parseDouble(data[1]);
             String name = data[2];
             int license = Integer.parseInt(data[3]);
-            boolean passed = data[4] == "true" ? true : false;
-            String notes = data[5];
-            if (data.length > 6) {
-               System.out.println("LONGER");
-               System.out.println(data[5]);
-               System.out.println(data[6]);
-               System.out.println(" ");
-            }
-            Marker marker = new Marker(lat, lng, name);
+            boolean passed = data[4].equals("true") ? true : false;
+            int daysSince = Integer.parseInt(data[5]);
+            System.out.println(daysSince + " days since: " + name);
+            String notes = data[6];
+            String text = name + ": " + notes;
+            
+            Marker marker = new Marker(lat, lng, text);
             marker.setSize(10);
+            if (passed) {
+                marker.setColor(Color.GREEN);
+            }
             markers.add(marker);
             
         }
