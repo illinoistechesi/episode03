@@ -41,7 +41,8 @@ public class Practice {
         while (index < responses.length) {
             String response = responses[index];
             if (response.indexOf("Zipotle") > -1) {
-                System.out.println(response);   
+                System.out.println(response);
+                break;
             }
         }
     }
