@@ -40,10 +40,9 @@ public class Practice {
         int index = 0;
         while (index < responses.length) {
             String response = responses[index];
-            if (response.indexOf("Zipotle") == 0) {
+            if (response.indexOf("Zipotle") > -1) {
                 System.out.println(response);   
             }
-            index++;
         }
     }
     
